@@ -1,4 +1,4 @@
-package com.example.basecamp_flutter_app
+package com.example.lecture_2_hometask_starter
 
 import io.flutter.embedding.android.FlutterActivity
 

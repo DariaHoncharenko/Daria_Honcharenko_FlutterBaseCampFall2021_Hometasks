@@ -1,6 +1,6 @@
-# basecamp_flutter_app
+# lecture_2_hometask_starter
 
-A new Flutter application.
+A new Flutter project.
 
 ## Getting Started
 
