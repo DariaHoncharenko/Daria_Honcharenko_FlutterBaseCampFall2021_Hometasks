@@ -11,7 +11,6 @@ class RandomNumberHashCalculator {
       curDigest += randomNumber.toString();
       curDigest = sha256.convert(utf8.encode(curDigest)).toString();
     }
-
     return curDigest;
   }
 }
