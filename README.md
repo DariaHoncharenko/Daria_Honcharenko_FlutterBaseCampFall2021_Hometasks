@@ -1,4 +1,4 @@
-# lecture_2_hometask_starter
+# campnotes
 
 A new Flutter project.
 
