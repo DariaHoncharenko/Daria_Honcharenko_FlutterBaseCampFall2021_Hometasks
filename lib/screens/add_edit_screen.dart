@@ -29,52 +29,51 @@ class _AddEditScreenState extends State<AddEditScreen> {
 
   // bool get isEditing => widget.isEditing;
 
-@override
-Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-        title: Text(FlutterBlocLocalizations.of(context).appSecondTitle),
-      ),
-      body:
-      Padding(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Expanded(
+   @override
+   Widget build(BuildContext context) {
+     return Scaffold (
+       resizeToAvoidBottomInset: false,
+       appBar: AppBar(
+         title: Text(FlutterBlocLocalizations.of(context).appSecondTitle),
+        ),
+         body: Column(
+           children: <Widget> [
+            Padding (
+              padding: EdgeInsets.only(top: 0.5),
               child: TextField(
                 style: Theme.of(context).textTheme.headline5,
                 decoration: InputDecoration(
-                  hintText: ' What needs to be done?',
-                ),
-                onChanged: (String value) {
-                  _task = value;},
-              ),
-            ),
+                  labelText: ' What needs to be done?',
+                 ),
+                 onChanged: (String value) {
+                   _task = value;},
+               ),
+             ),
             Container(
-              margin: const EdgeInsets.only(bottom: 450),
+              padding: EdgeInsets.only(top: 1.0),
               child: TextField(
                 style: Theme.of(context).textTheme.subtitle1,
                 decoration: InputDecoration(
-                  labelText: ' Additional notes...',
+                labelText: ' Additional notes...',
+                floatingLabelBehavior:FloatingLabelBehavior.always,
                 ),
                 maxLines: 10,
-                minLines: 7,
+                minLines: 10,
                 onChanged: (String value) {
                   _note = value;
                 },
               ),
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('New task:' + _task);
-          print('Description of the task:' + _note);
-        },
-        child: Icon(Icons.add),
-        tooltip: ArchSampleLocalizations.of(context).addTodo,
-      )
-  );
- }
+             ),
+          ]
+         ),
+       floatingActionButton: FloatingActionButton(
+         onPressed: () {
+            print('New task:' + _task);
+            print('Description of the task:' + _note);
+            },
+           child: Icon(Icons.add),
+           tooltip: ArchSampleLocalizations.of(context).addTodo,
+         ),
+    );
+  }
 }
