@@ -11,6 +11,7 @@ class FlutterBlocLocalizations {
   }
 
   String get appTitle => "Flutter Todos";
+  String get appSecondTitle => "Add Todos";
 }
 
 class FlutterBlocLocalizationsDelegate

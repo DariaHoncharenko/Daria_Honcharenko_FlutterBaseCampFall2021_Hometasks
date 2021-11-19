@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:todos_app_core/todos_app_core.dart';
 import 'package:campnotes/widgets/widgets.dart';
 import 'package:campnotes/localization.dart';
+import 'add_edit_screen.dart';
 
 class HomeScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final activeTab = AppTab.todos;
@@ -20,8 +22,12 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         key: ArchSampleKeys.addTodoFab,
         onPressed: () {
-          Navigator.pushNamed(context, ArchSampleRoutes.addTodo);
-        },
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+              builder: (context) => AddEditScreen()),
+           );
+         },
         child: Icon(Icons.add),
         tooltip: ArchSampleLocalizations.of(context).addTodo,
       ),
