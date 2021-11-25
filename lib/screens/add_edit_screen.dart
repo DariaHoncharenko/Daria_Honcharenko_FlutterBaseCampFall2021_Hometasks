@@ -8,14 +8,14 @@ import '../localization.dart';
 typedef OnSaveCallback = Function(String task, String note);
 
 class AddEditScreen extends StatefulWidget {
-  // final bool isEditing;
-  // final OnSaveCallback onSave;
+  final bool isEditing;
+  final OnSaveCallback onSave;
   final Todo todo;
 
   AddEditScreen({
     Key key,
-    // @required this.onSave, -- at the moment they aren't used to solve the current task;
-    // @required this.isEditing,
+    @required this.onSave,
+    @required this.isEditing,
     this.todo,
   }) : super(key: key ?? ArchSampleKeys.addTodoScreen);
 
@@ -27,7 +27,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
   String _task;
   String _note;
 
-  // bool get isEditing => widget.isEditing;
+  bool get isEditing => widget.isEditing;
 
    @override
    Widget build(BuildContext context) {
@@ -46,7 +46,8 @@ class _AddEditScreenState extends State<AddEditScreen> {
                   labelText: ' What needs to be done?',
                  ),
                  onChanged: (String value) {
-                   _task = value;},
+                   _task = value;
+                   },
                ),
              ),
             Container(
@@ -55,7 +56,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 style: Theme.of(context).textTheme.subtitle1,
                 decoration: InputDecoration(
                 labelText: ' Additional notes...',
-                floatingLabelBehavior:FloatingLabelBehavior.always,
+                floatingLabelBehavior:FloatingLabelBehavior.always
                 ),
                 maxLines: 10,
                 minLines: 10,
@@ -68,12 +69,12 @@ class _AddEditScreenState extends State<AddEditScreen> {
          ),
        floatingActionButton: FloatingActionButton(
          onPressed: () {
-            print('New task:' + _task);
-            print('Description of the task:' + _note);
-            },
-           child: Icon(Icons.add),
-           tooltip: ArchSampleLocalizations.of(context).addTodo,
-         ),
+           print('New task:' + _task);
+           print('Description of the task:' + _note);
+         },
+         child: Icon(Icons.add),
+         tooltip: ArchSampleLocalizations.of(context).addTodo,
+     ),
     );
   }
 }

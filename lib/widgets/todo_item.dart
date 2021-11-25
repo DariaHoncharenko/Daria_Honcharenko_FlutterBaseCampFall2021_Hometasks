@@ -1,7 +1,9 @@
 import 'package:campnotes/data/models/todo.dart';
+import 'package:campnotes/screens/add_edit_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:todos_app_core/todos_app_core.dart';
+
 
 class TodoItem extends StatelessWidget {
   final DismissDirectionCallback onDismissed;
@@ -23,7 +25,7 @@ class TodoItem extends StatelessWidget {
       key: ArchSampleKeys.todoItem(todo.id),
       onDismissed: onDismissed,
       child: ListTile(
-        onTap: onTap,
+        onTap: () => editTodo(context, todo),
         leading: Checkbox(
           key: ArchSampleKeys.todoItemCheckbox(todo.id),
           value: todo.complete,
@@ -42,14 +44,26 @@ class TodoItem extends StatelessWidget {
         ),
         subtitle: todo.note.isNotEmpty
             ? Text(
-                todo.note,
-                key: ArchSampleKeys.todoItemNote(todo.id),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.subtitle1,
-              )
+          todo.note,
+          key: ArchSampleKeys.todoItemNote(todo.id),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
+          style: Theme.of(context).textTheme.subtitle1,
+        )
             : null,
       ),
     );
   }
+
+    void editTodo(BuildContext context, Todo todo) =>
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return AddEditScreen(onSave: (task, note) {}, isEditing: true,
+                todo: todo,
+              );
+            },
+       ),
+    );
 }
+

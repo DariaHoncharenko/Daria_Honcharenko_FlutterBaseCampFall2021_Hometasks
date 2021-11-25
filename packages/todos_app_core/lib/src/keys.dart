@@ -21,6 +21,7 @@ class ArchSampleKeys {
   static final todoItemNote = (String id) => Key('TodoItem__${id}__Note');
 
   // Tabs
+  static const tab = Key('__tab__');
   static const tabs = Key('__tabs__');
   static const todoTab = Key('__todoTab__');
   static const statsTab = Key('__statsTab__');

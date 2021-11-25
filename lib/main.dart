@@ -12,6 +12,7 @@ void main() async {
 }
 
 class TodosApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,8 +29,8 @@ class TodosApp extends StatelessWidget {
         ArchSampleRoutes.addTodo: (context) {
           return AddEditScreen(
             key: ArchSampleKeys.addTodoScreen,
-            // onSave: (task, note) {},
-            // isEditing: false,
+            onSave: (task, note) {},
+            isEditing: false,
           );
         },
       },
