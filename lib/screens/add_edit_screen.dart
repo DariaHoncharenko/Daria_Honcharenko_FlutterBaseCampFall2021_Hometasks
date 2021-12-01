@@ -24,6 +24,7 @@ class AddEditScreen extends StatefulWidget {
 }
 
 class _AddEditScreenState extends State<AddEditScreen> {
+
   String _task;
   String _note;
 
@@ -32,9 +33,11 @@ class _AddEditScreenState extends State<AddEditScreen> {
    @override
    Widget build(BuildContext context) {
      return Scaffold (
+       key: UniqueKey(),
        resizeToAvoidBottomInset: false,
        appBar: AppBar(
-         title: Text(FlutterBlocLocalizations.of(context).appSecondTitle),
+         title: Text(
+             FlutterBlocLocalizations.of(context).appSecondTitle),
         ),
          body: Column(
            children: <Widget> [
@@ -46,10 +49,10 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 autofocus: !isEditing,
                 style: Theme.of(context).textTheme.headline5,
                 decoration: InputDecoration(
-                  labelText: ' What needs to be done?',
-                 ),
-                 onSaved: (value) => _task = value,
-                 onChanged: (String value) {
+                     labelText: ' What needs to be done?',
+                ),
+                onSaved: (value) => _task = value,
+                onChanged: (String value) {
                    _task = value;
                    },
                ),
@@ -62,7 +65,7 @@ class _AddEditScreenState extends State<AddEditScreen> {
                 style: Theme.of(context).textTheme.subtitle1,
                 decoration: InputDecoration(
                 labelText: ' Additional notes...',
-                floatingLabelBehavior:FloatingLabelBehavior.always
+                floatingLabelBehavior:FloatingLabelBehavior.always,
                 ),
                 maxLines: 10,
                 minLines: 10,
@@ -80,12 +83,10 @@ class _AddEditScreenState extends State<AddEditScreen> {
            widget.onSave(_task, _note);
            Navigator.pop(context);
 
-           // print('New task:' + _task);
-           // print('Description of the task:' + _note);
          },
          child: Icon(Icons.add),
          tooltip: ArchSampleLocalizations.of(context).addTodo,
-     ),
+       ),
     );
   }
 }

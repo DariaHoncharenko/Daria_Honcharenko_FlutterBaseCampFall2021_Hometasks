@@ -1,1 +1,1 @@
-enum AppTab { home, work, leisure}
+enum AppTab { todos, stats }

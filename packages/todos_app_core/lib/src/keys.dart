@@ -13,6 +13,9 @@ class ArchSampleKeys {
 
   // Todos
   static const todoList = Key('__todoList__');
+  static const todoHomeList = Key('__todoHomeList__');
+  static const todoWorkList = Key('__todoWorkList__');
+  static const todoLeisureList = Key('__todoHomeList__');
   static const todosLoading = Key('__todosLoading__');
   static final todoItem = (String id) => Key('TodoItem__${id}');
   static final todoItemCheckbox =
@@ -21,7 +24,6 @@ class ArchSampleKeys {
   static final todoItemNote = (String id) => Key('TodoItem__${id}__Note');
 
   // Tabs
-  static const tab = Key('__tab__');
   static const tabs = Key('__tabs__');
   static const todoTab = Key('__todoTab__');
   static const statsTab = Key('__statsTab__');
