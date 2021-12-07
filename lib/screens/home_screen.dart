@@ -1,7 +1,6 @@
 import 'package:campnotes/bloc/models/tab_item.dart';
 import 'package:campnotes/widgets/home_list_todo.dart';
 import 'package:campnotes/widgets/leisure_list_todo.dart';
-import 'package:campnotes/widgets/floating_action_button_widget.dart';
 import 'package:campnotes/widgets/work_list_todo.dart';
 import 'package:flutter/material.dart';
 import 'package:todos_app_core/todos_app_core.dart';
@@ -19,51 +18,53 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen>
-    with SingleTickerProviderStateMixin {
+class _HomeScreenState extends State<HomeScreen> {
 
   TabItem activeTab = TabItem.home;
 
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: Text(FlutterBlocLocalizations
-                .of(context)
-                .appTitle),
-            actions: <Widget>[
-              FilterButton(visible: activeTab == TabItem.home),
-              ExtraActions(),
-            ],
-            bottom: TabBar(
-              tabs: [
-                Tab(icon: Icon(Icons.home), text: 'Home'),
-                Tab(icon: Icon(Icons.work), text: 'Work'),
-                Tab(icon: Icon(Icons.directions_bike_outlined),
-                    text: 'Leisure'),
-              ],
-              onTap: (index) {
-                setState(() {
-                  activeTab = TabItem.values[index];
-                });
-              },
-              indicatorColor: Color(0xffe7bc3c),
-              indicatorWeight: 10,
-              indicatorPadding: EdgeInsets.only(right: 20),
-            ),
-          ),
+       length: 3,
+       child: Scaffold(
+         appBar: AppBar(
+          title: Text(FlutterBlocLocalizations.of(context).appTitle),
+          actions: <Widget> [
+          FilterButton(visible: activeTab == TabItem.home),
+          ExtraActions(),
+           ],
+          bottom: TabBar(
+            tabs: [
+             Tab(icon: Icon(Icons.home), text: 'Home'),
+             Tab(icon: Icon(Icons.work), text: 'Work'),
+             Tab(icon: Icon(Icons.directions_bike_outlined), text: 'Leisure'),
+          ],
+          onTap: (index) {
+            setState(() {
+              activeTab = TabItem.values[index];
+            });
+          },
+          indicatorColor: Color(0xffe7bc3c),
+          indicatorWeight: 10,
+          indicatorPadding: EdgeInsets.only(right: 20),
+         ),
+        ),
+         body: _buildBody(),
 
-          body: _buildBody(),
-
-           floatingActionButton: FloatingActionButtonWidget(),
-
-          bottomNavigationBar: TabSelector(
-            activeTab: activeTab,
-            onTabSelected: (tab) {},
-          ),
-        )
+          floatingActionButton: FloatingActionButton(
+           key: ArchSampleKeys.addTodoFab,
+           onPressed: () {
+           Navigator.pushNamed(
+              context, ArchSampleRoutes.addTodo);
+            },
+           child: Icon(Icons.add),
+           tooltip: ArchSampleLocalizations.of(context).addTodo,
+         ),
+         bottomNavigationBar: TabSelector(
+         activeTab: activeTab,
+         onTabSelected: (tab) {},
+       ),
+     )
     );
   }
 
@@ -75,8 +76,7 @@ class _HomeScreenState extends State<HomeScreen>
         return WorkListTodo();
       case TabItem.leisure:
         return LeisureListTodo();
-      default:
-        return null;
+      default: return null;
     }
   }
 }
