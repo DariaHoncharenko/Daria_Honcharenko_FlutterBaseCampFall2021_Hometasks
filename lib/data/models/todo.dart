@@ -1,12 +1,13 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/cupertino.dart';
 
 class Todo extends Equatable {
-  final bool complete;
-  final String id;
-  final String note;
-  final String task;
+  bool complete;
+  String id;
+  String note;
+  String task;
 
-  const Todo(
+  Todo(
     this.task, {
     this.complete = false,
     String note = '',
